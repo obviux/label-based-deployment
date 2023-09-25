@@ -1,0 +1,35 @@
+name: Release management
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'terraform/**'
+
+jobs:
+  release-management:
+    runs-on: ubuntu-latest
+    concurrency: release
+    steps:
+      - name: Manage release
+        uses: GoogleCloudPlatform/release-please-action@v2
+        id: release
+        with:
+          token: ${{ secrets.OBVIUX_BOT_TOKEN }}
+          release-type: simple
+          changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}, {"type":"refactor","section":"Miscellaneous","hidden":false}]'
+      - name: Add app tag to release
+        run: |
+          for i in {1..10}
+          do
+            if [[ "${{ steps.release.outputs.release_created }}" == "true" ]]; then
+              git tag app ${{ steps.release.outputs.tag_name }}
+              git push origin app
+              echo "Release tagged"
+              break
+            else
+              echo "Release not created yet, retrying in 5 seconds..."
+              sleep 5
+            fi
+          done
