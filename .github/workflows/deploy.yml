@@ -1,0 +1,26 @@
+name: Deploy
+
+on:
+  release:
+    types: [released]
+
+jobs:
+  deploy-terraform:
+    if: contains(github.ref, 'terraform')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy Terraform
+        run: echo "Deploying Terraform..."
+
+  deploy-app:
+    if: !contains(github.ref, 'terraform')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy Other
+        run: echo "Deploying app..."
