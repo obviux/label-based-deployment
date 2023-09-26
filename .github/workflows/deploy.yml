@@ -14,7 +14,6 @@ jobs:
 
       - name: Deploy Terraform
         run: echo "Deploying Terraform..."
-
   deploy-app:
     if: !contains(github.ref, 'terraform')
     runs-on: ubuntu-latest
