@@ -26,7 +26,6 @@ jobs:
               echo "writing the value ${i}:"
               echo "${{steps.release.outputs.releases_created}}"
               echo ${{steps.release.outputs.releases_created}}
-              echo ${steps.release.outputs.releases_created}
               if [${{ steps.release.outputs.releases_created }}]
               then
                 echo "it is true in the boolean sense"
