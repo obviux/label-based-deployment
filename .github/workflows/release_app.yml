@@ -19,6 +19,11 @@ jobs:
           token: ${{ secrets.ME_BOT_TOKEN }}
           release-type: simple
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}, {"type":"refactor","section":"Miscellaneous","hidden":false}]'
+      - name: Is release created
+        if: ${{ steps.release.outputs.releases_created }}
+        run: echo "release is created"
+      - name: Is release not created
+        if: "!${{ steps.release.outputs.releases_created }}"
       - name: Add app tag to release
         run: |
           for i in {1..5}
