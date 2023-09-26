@@ -23,7 +23,24 @@ jobs:
         run: |
           for i in {1..5}
             do
-              echo "${{ steps.release.outputs.releases_created }}"
+              echo "writing the value ${i}:"
+              echo "${{steps.release.outputs.releases_created}}"
+              echo "${steps.release.outputs.releases_created}"
+              echo ${{steps.release.outputs.releases_created}}
+              echo ${steps.release.outputs.releases_created}
+              if [${{ steps.release.outputs.releases_created }}]
+              then
+                echo "it is true in the boolean sense"
+              else
+                echo "it is not true in the boolean sense"
+              fi
+
+              if [${{ steps.release.outputs.releases_created }}=="true"]
+              then
+                echo "it is true in the string sense"
+              else
+                echo "it is not true in the string sense"
+              fi
               sleep 5
             done
           # for i in {1..10}
