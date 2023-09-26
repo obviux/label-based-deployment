@@ -13,7 +13,7 @@ jobs:
     concurrency: release
     steps:
       - name: Manage release
-        uses: GoogleCloudPlatform/release-please-action@v2
+        uses: google-github-actions/release-please-action@v3
         id: release
         with:
           token: ${{ secrets.ME_BOT_TOKEN }}
