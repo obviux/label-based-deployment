@@ -23,7 +23,7 @@ jobs:
         run: |
           for i in {1..5}
             do
-              echo "${{ steps.release.outputs.release_created }}"
+              echo "${{ steps.release.outputs.releases_created }}"
               sleep 5
             done
           # for i in {1..10}
