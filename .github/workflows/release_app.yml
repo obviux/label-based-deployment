@@ -23,7 +23,7 @@ jobs:
         if: ${{ steps.release.outputs.releases_created }}
         run: echo "release is created"
       - name: Is release not created
-        if: "!${{ steps.release.outputs.releases_created }}"
+        if: ${{ steps.release.outputs.releases_created == false}}
         run: echo "release is not created"
       - name: Add app tag to release
         run: |
