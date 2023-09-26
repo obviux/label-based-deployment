@@ -6,6 +6,7 @@ on:
 
 jobs:
   deploy-terraform:
+    name: deploy-terraform
     if: contains(github.ref, 'terraform')
     runs-on: ubuntu-latest
     steps:
@@ -15,6 +16,7 @@ jobs:
       - name: Deploy Terraform
         run: echo "Deploying Terraform..."
   deploy-app:
+    name: deploy-app
     if: !contains(github.ref, 'terraform')
     runs-on: ubuntu-latest
     steps:
