@@ -19,11 +19,20 @@ jobs:
           token: ${{ secrets.ME_BOT_TOKEN }}
           release-type: simple
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}, {"type":"refactor","section":"Miscellaneous","hidden":false}]'
+      
+      - name: Get PR number
+        id: pr_number 
+        run: |
+          PR_JSON=${{ steps.release.outputs.pr }}
+          PR_NUMBER=$(echo $PR_JSON | jq .number)
+          echo "::set-output name=number::$PR_NUMBER"
+      
       - name: Labeler
         uses: actions/labeler@v4
         with:
           dot: true
-          pr-number: ${{ steps.release.outputs.pull-request-number }}
+          pr-number: ${{ steps.pr_number.outputs.number }}
+      
       - name: Did labeler do anything
         run: |
           echo "printing new-labels"
