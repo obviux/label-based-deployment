@@ -28,7 +28,6 @@ jobs:
           echo "${{ steps.release.outputs.pr }}"
           echo "end PR_JSON"
           echo "${PR_JSON}"
-
       
       - name: Labeler
         uses: actions/labeler@v4
