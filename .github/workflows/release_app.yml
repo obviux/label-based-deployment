@@ -23,9 +23,11 @@ jobs:
       - name: Get PR number
         id: pr_number 
         run: |
+          PR_JSON="${{ steps.release.outputs.pr }}"
           echo "start PR_JSON"
           echo "${{ steps.release.outputs.pr }}"
           echo "end PR_JSON"
+          echo "${PR_JSON}"
 
       
       - name: Labeler
