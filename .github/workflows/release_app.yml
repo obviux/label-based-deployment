@@ -26,9 +26,10 @@ jobs:
           echo "start PR_JSON"
           echo ${{ steps.release.outputs.pr }}
           echo "start PR_json_2"
-          echo "\{${{ steps.release.outputs.pr }}\}"
+          PR_NUMBER=$(echo "${{ steps.release.outputs.pr }}" | awk -F' ' '{for(i=1;i<=NF;i++) if ($i ~ /number:/) print $i}' | cut -d ':' -f 2)
+          echo "PR Number: $PR_NUMBER"
           echo "end PR_JSON"
-          echo "\{${{ steps.release.outputs.pr }}\}" | jq '.number'
+        #  echo "\{${{ steps.release.outputs.pr }}\}" | jq '.number'
         # echo ${{ steps.release.outputs.pr }} > something.txt
         # cat something.txt | jq '.number'
    #       echo ${{ steps.release.outputs.pr }} | jq '.number'
