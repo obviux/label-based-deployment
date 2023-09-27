@@ -1,0 +1,5 @@
+terraform:
+  -  terraform/**
+
+app:
+  - any: ['**', '!terraform/*', '!version.txt', '!README.md', '!CHANGELOG.md']
