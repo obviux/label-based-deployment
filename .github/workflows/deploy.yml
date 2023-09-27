@@ -13,15 +13,32 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Deploy Terraform
-        run: echo "Deploying Terraform..."
-  deploy-app:
-    name: deploy-app
-    if: !contains(github.ref, 'terraform')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Get PR labels
+        id: pr_labels
+        run: |
+          PR_NUMBER=$(gh api repos/$GITHUB_REPOSITORY/pulls --jq ".[] | select(.merge_commit_sha==\"${{ github.event.release.target_commitish }}\") | .number")
+          echo $PR_NUMBER
+          LABELS=$(gh api repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels --jq ".[].name")
+          echo $LABELS
+          echo "::set-output name=labels::${LABELS}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Deploy Other
+      - name: Deploy Terraform
+        if: contains(steps.pr_labels.outputs.labels, 'terraform')
+        run: echo "Deploying Terraform..."
+      
+      - name: Deploy app
+        if: contains(steps.pr_labels.outputs.labels, 'app')
         run: echo "Deploying app..."
+        
+  # deploy-app:
+  #   name: deploy-app
+  #   if: !contains(github.ref, 'terraform')
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Deploy Other
+  #       run: echo "Deploying app..."

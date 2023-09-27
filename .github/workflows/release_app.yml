@@ -19,34 +19,44 @@ jobs:
           token: ${{ secrets.ME_BOT_TOKEN }}
           release-type: simple
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}, {"type":"refactor","section":"Miscellaneous","hidden":false}]'
-      - name: Is release created
-        if: ${{ steps.release.outputs.releases_created }}
-        run: echo "release is created"
-      - name: Is release not created
-        if: ${{ steps.release.outputs.releases_created == false}}
-        run: echo "release is not created"
-      - name: Add app tag to release
+      - name: Labeler
+        uses: actions/labeler@v4
+        with:
+          dot: true
+      - name: Did labeler do anything
         run: |
-          for i in {1..5}
-            do
-              echo "writing the value ${i}:"
-              echo "${{steps.release.outputs.releases_created}}"
-              echo ${{steps.release.outputs.releases_created}}
-              if [${{ steps.release.outputs.releases_created }}]
-              then
-                echo "it is true in the boolean sense"
-              else
-                echo "it is not true in the boolean sense"
-              fi
+          echo "printing new-labels"
+          echo $steps.label-the-PR.outputs.new-labels
+          echo "printing all-labels"
+          echo $steps.label-the-PR.outputs.all-labels
+      # - name: Is release created
+      #   if: ${{ steps.release.outputs.releases_created }}
+      #   run: echo "release is created"
+      # - name: Is release not created
+      #   if: ${{ steps.release.outputs.releases_created == false}}
+      #   run: echo "release is not created"
+      # - name: Add app tag to release
+      #   run: |
+      #     for i in {1..5}
+      #       do
+      #         echo "writing the value ${i}:"
+      #         echo "${{steps.release.outputs.releases_created}}"
+      #         echo ${{steps.release.outputs.releases_created}}
+      #         if [${{ steps.release.outputs.releases_created }}]
+      #         then
+      #           echo "it is true in the boolean sense"
+      #         else
+      #           echo "it is not true in the boolean sense"
+      #         fi
 
-              if [${{ steps.release.outputs.releases_created }}=="true"]
-              then
-                echo "it is true in the string sense"
-              else
-                echo "it is not true in the string sense"
-              fi
-              sleep 5
-            done
+      #         if [${{ steps.release.outputs.releases_created }}=="true"]
+      #         then
+      #           echo "it is true in the string sense"
+      #         else
+      #           echo "it is not true in the string sense"
+      #         fi
+      #         sleep 5
+      #       done
           # for i in {1..10}
           # do
           #   if [[ "${{ steps.release.outputs.release_created }}" == "true" ]]; then
