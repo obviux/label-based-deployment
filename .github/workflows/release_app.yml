@@ -23,12 +23,13 @@ jobs:
         uses: actions/labeler@v4
         with:
           dot: true
+          pr-number: ${{ steps.release.outputs.pull-request-number }}
       - name: Did labeler do anything
         run: |
           echo "printing new-labels"
-          echo $steps.label-the-PR.outputs.new-labels
+          echo ${{ steps.Labeler.outputs.new-labels }}
           echo "printing all-labels"
-          echo $steps.label-the-PR.outputs.all-labels
+          echo ${{ steps.Labeler.outputs.all-labels }}
       # - name: Is release created
       #   if: ${{ steps.release.outputs.releases_created }}
       #   run: echo "release is created"
