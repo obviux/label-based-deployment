@@ -24,10 +24,9 @@ jobs:
         id: pr_number 
         run: |
           echo "start PR_JSON"
-          echo "${{ steps.release.outputs.pr }}"
+          echo ${{ steps.release.outputs.pr }}
           echo "end PR_JSON"
-          echo "${PR_JSON}"
-          PR_JSON="${{ steps.release.outputs.pr }}"
+          PR_NUMBER=$(echo ${{ steps.release.outputs.pr }} | jq .number)
       
       - name: Labeler
         uses: actions/labeler@v4
