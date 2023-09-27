@@ -24,14 +24,9 @@ jobs:
         id: pr_number 
         run: |
           echo "start PR_JSON"
-          echo ${{ steps.release.outputs.pr }}
+          echo "${{ steps.release.outputs.pr }}"
           echo "end PR_JSON"
-          PR_JSON="${{ steps.release.outputs.pr }}"
-          echo "PR_JSON start"
-          echo $PR_JSON
-          echo "PR_JSON end"
-          PR_NUMBER=$(jq -r '.number' <<< "$PR_JSON")
-          echo "::set-output name=number::$PR_NUMBER"
+
       
       - name: Labeler
         uses: actions/labeler@v4
@@ -45,6 +40,16 @@ jobs:
           echo ${{ steps.Labeler.outputs.new-labels }}
           echo "printing all-labels"
           echo ${{ steps.Labeler.outputs.all-labels }}
+
+          
+      # PR_JSON="${{ steps.release.outputs.pr }}"
+      # echo "PR_JSON start"
+      # echo $PR_JSON
+      # echo "PR_JSON end"
+      # PR_NUMBER=$(jq -r '.number' <<< "$PR_JSON")
+      # echo "::set-output name=number::$PR_NUMBER"
+
+      
       # - name: Is release created
       #   if: ${{ steps.release.outputs.releases_created }}
       #   run: echo "release is created"
