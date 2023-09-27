@@ -24,7 +24,7 @@ jobs:
         id: pr_number 
         run: |
           PR_JSON="${{ steps.release.outputs.pr }}"
-          PR_NUMBER=$(echo -r "$PR_JSON" | jq .number)
+          PR_NUMBER=$(jq -r '.number' <<< "$PR_JSON")
           echo "::set-output name=number::$PR_NUMBER"
       
       - name: Labeler
