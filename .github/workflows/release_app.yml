@@ -23,6 +23,9 @@ jobs:
       - name: Get PR number
         id: pr_number 
         run: |
+          echo "start PR_JSON"
+          echo ${{ steps.release.outputs.pr }}
+          echo "end PR_JSON"
           PR_JSON="${{ steps.release.outputs.pr }}"
           echo "PR_JSON start"
           echo $PR_JSON
