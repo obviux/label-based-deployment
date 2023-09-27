@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.4...v1.0.5) (2023-09-27)
+
+
+### Miscellaneous
+
+* Create labeler.yml ([ef165d7](https://github.com/obviux/dual-tag-release-poc/commit/ef165d70eb089c382f0b784663da536d97229289))
+
 ## [1.0.4](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.3...v1.0.4) (2023-09-26)
 
 
