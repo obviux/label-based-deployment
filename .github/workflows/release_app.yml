@@ -23,7 +23,7 @@ jobs:
       - name: Get PR number
         id: pr_number 
         run: |
-          PR_JSON=${{ steps.release.outputs.pr }}
+          PR_JSON="${{ steps.release.outputs.pr }}"
           PR_NUMBER=$(echo -r "$PR_JSON" | jq .number)
           echo "::set-output name=number::$PR_NUMBER"
       
