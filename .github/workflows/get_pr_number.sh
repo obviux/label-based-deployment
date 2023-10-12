@@ -12,6 +12,7 @@ do
     if [[ $var =~ ^number:[0-9]+$ ]]; then
         pr_number=${var#*:}
         echo $pr_number
+        echo "number=$pr_number" >> $GITHUB_OUTPUT
     fi
 done
 
