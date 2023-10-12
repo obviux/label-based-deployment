@@ -8,6 +8,8 @@ if [ $# -eq 0 ]; then
 fi
 
 var=$1
+echo $1
+echo $var
 
 for element in $var
 do
