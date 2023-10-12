@@ -28,7 +28,7 @@ jobs:
         run: |
          echo "print PR_JSON"
          echo ${{ steps.release.outputs.pr }}
-         bash .github/workflows/get_pr_number.sh ${{ steps.release.outputs.pr }} >> $GITHUB_OUTPUT
+         bash .github/workflows/get_pr_number.sh ${{ steps.release.outputs.pr }}
       
       - name: Labeler
         uses: actions/labeler@v4
