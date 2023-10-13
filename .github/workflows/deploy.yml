@@ -5,9 +5,8 @@ on:
     types: [released]
 
 jobs:
-  deploy-terraform:
+  deploy:
     name: deploy-terraform
-    if: contains(github.ref, 'terraform')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
