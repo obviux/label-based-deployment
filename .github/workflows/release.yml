@@ -53,6 +53,7 @@ jobs:
               repo: context.repo.repo,
               labels: ["app"]
             })
+          retries: 5
 
       - name: Label as terraform
         if: steps.path_filters.outputs.terraform == 'true' #If there are any terraform or deployment changes
@@ -63,7 +64,6 @@ jobs:
               issue_number: ${{ steps.pr_number.outputs.number }},
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: ["app"]
+              labels: ["terraform"]
             })
-          debug: true
           retries: 5
