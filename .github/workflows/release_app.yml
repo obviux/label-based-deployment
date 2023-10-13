@@ -46,17 +46,17 @@ jobs:
               - 'terraform/**'
 
       - name: app_something
-        if: steps.filter.outputs.app == 'true'
+        if: steps.path_filters.outputs.app == 'true'
         run: |
           echo "app-type"
 
       - name: terraform_something
-        if: steps.filter.outputs.terraform == 'true'
+        if: steps.path_filters.outputs.terraform == 'true'
         run: |
           echo "terraform-type"
 
       - name: app_something
-        if: steps.filter.outputs.app == 'true' && steps.filter.outputs.terraform == 'true'
+        if: steps.path_filters.outputs.app == 'true' && steps.filter.outputs.terraform == 'true'
         run: |
           echo "both-type"      
 
