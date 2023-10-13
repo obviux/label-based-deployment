@@ -8,4 +8,4 @@ labeler:
   -  .github/labeler.yml
 
 anything:
-  -  **
+  -  '**'
