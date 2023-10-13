@@ -25,5 +25,6 @@ dot_changes3:
 change_in_any_folder:
   -  '*/**'
 
-# anything:
-#   -  '**'
+anything:
+  -  '**'
+
