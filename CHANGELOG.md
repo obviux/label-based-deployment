@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.0.7](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.6...v1.0.7) (2023-10-13)
+
+
+### Miscellaneous
+
+* Create get_pr_number.sh ([e1a9ada](https://github.com/obviux/dual-tag-release-poc/commit/e1a9adafedbf20352787e97d12a23f038357b6c5))
+* Update get_pr_number.sh ([20edc8e](https://github.com/obviux/dual-tag-release-poc/commit/20edc8ed1bf20def968e4a447fdbe3eb95afb870))
+* Update get_pr_number.sh ([362f3f4](https://github.com/obviux/dual-tag-release-poc/commit/362f3f4e17dc591856b750004f9a17dbc826ee0b))
+* Update get_pr_number.sh ([9e38586](https://github.com/obviux/dual-tag-release-poc/commit/9e3858654299a7c2765b4b634c732437c8adcb6f))
+* Update get_pr_number.sh ([348e2da](https://github.com/obviux/dual-tag-release-poc/commit/348e2da920a8f2a785a37d2cc5262eec41245a5f))
+* Update labeler.yml ([e79ec70](https://github.com/obviux/dual-tag-release-poc/commit/e79ec700524a7074d4427d93ca7eb9b150e122d2))
+* Update labeler.yml ([d93e51c](https://github.com/obviux/dual-tag-release-poc/commit/d93e51c091b1a1a9a1d5d6dcd5e173683479e225))
+* Update labeler.yml ([b20713b](https://github.com/obviux/dual-tag-release-poc/commit/b20713b8f6f0b7ca2f9deb7514d46a4578a948bc))
+* Update labeler.yml ([49370a3](https://github.com/obviux/dual-tag-release-poc/commit/49370a33dc86881d69625be5ca6a7d1e2802ddeb))
+* Update labeler.yml ([c8ad598](https://github.com/obviux/dual-tag-release-poc/commit/c8ad5982ff373abf9c069f7a006746390f3753bf))
+* Update labeler.yml ([3a7bd6a](https://github.com/obviux/dual-tag-release-poc/commit/3a7bd6a7986d7cb70f303f5afba068647a0f83bb))
+* Update labeler.yml ([94e0ecf](https://github.com/obviux/dual-tag-release-poc/commit/94e0ecf9640fad0504fb979c35ccf084b1bb93e6))
+* Update labeler.yml ([d307fa4](https://github.com/obviux/dual-tag-release-poc/commit/d307fa4dbfedc2c5495eff385bbfea016c508b88))
+* Update release_app.yml ([9090637](https://github.com/obviux/dual-tag-release-poc/commit/90906379bbd151ed06d9a9a4eb1240b21f8f188b))
+* Update release_app.yml ([2cb987a](https://github.com/obviux/dual-tag-release-poc/commit/2cb987a434a83050c80bed7cae32d640fc9e1c0d))
+* Update release_app.yml ([d84a227](https://github.com/obviux/dual-tag-release-poc/commit/d84a2276e308aefab28067e1a8b4216c109f2bd2))
+* Update release_app.yml ([2a73dfb](https://github.com/obviux/dual-tag-release-poc/commit/2a73dfbc835b8a8e8ed525fe0f0ace67c1526ea5))
+* Update release_app.yml ([54e5446](https://github.com/obviux/dual-tag-release-poc/commit/54e5446d1e88758bd2a8d16e60bdd799c859269b))
+* Update release_app.yml ([c6edf0e](https://github.com/obviux/dual-tag-release-poc/commit/c6edf0ec09c957ccbf5a04d6c942cfb5845dbb7f))
+* Update release_app.yml ([ff7c147](https://github.com/obviux/dual-tag-release-poc/commit/ff7c1473e9af7d9ad6eb02fc73afb3b4dd623dad))
+* Update release_app.yml ([be43aa4](https://github.com/obviux/dual-tag-release-poc/commit/be43aa454a9b8f26a0980ac9b5b7f1a8ef3ef20b))
+* Update release_app.yml ([40f84fc](https://github.com/obviux/dual-tag-release-poc/commit/40f84fc3ae160b15079a3ddbe96e2eb2eaf13c4b))
+* Update release_app.yml ([2c4b5c0](https://github.com/obviux/dual-tag-release-poc/commit/2c4b5c05b10fa6cf432d6518a347369a0f4eec65))
+* Update release_app.yml ([93a5b75](https://github.com/obviux/dual-tag-release-poc/commit/93a5b75a10c8cd9255cedfabb514a0508d040830))
+
 ## [1.0.6](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.5...v1.0.6) (2023-09-27)
 
 
