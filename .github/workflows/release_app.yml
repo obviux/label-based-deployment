@@ -53,7 +53,7 @@ jobs:
           echo "terraform-type"
 
       - name: both_type
-        if: (steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count) && steps.filter.outputs.terraform == 'true'
+        if: (steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count) && (steps.path_filters.outputs.terraform == 'true')
         run: |
           echo "both-type"      
 
