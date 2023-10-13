@@ -35,6 +35,17 @@ jobs:
         with:
           dot: true
           pr-number: ${{ steps.pr_number.outputs.number }}
+
+      - name: New_labeler
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: ${{ steps.pr_number.outputs.number }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ["app"]
+            })
       
       - name: Did labeler do anything
         run: |
