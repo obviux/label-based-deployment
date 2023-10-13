@@ -4,11 +4,6 @@ on:
   push:
     branches:
       - master
-    # paths:
-    #   -  '**'
-    #   -  '!terraform/*'
-    # paths-ignore:
-    #   - 'terraform/**'
 
 jobs:
   release-management:
@@ -40,28 +35,17 @@ jobs:
               - '**'
             terraform:
               - 'terraform/**'
-
-      - name: print_path_filters
-        run: |
-          echo ${{ steps.path_filters.outputs.all_count }}
-          echo ${{ steps.path_filters.outputs.terraform_count }}
-          a=${{ steps.path_filters.outputs.all_count }}-${{ steps.path_filters.outputs.terraform_count }}
-          echo $a
+              - '.github/**'
+            app-ignore-list:
+              - 'CHANGELOG.md'
+              - 'README.md'
+              - 'version.txt'
+              - 'terraform/**'
 
       - name: all is larger
-        if: steps.path_filters.outputs.all_count > steps.path_filters.outputs.terraform_count
+        if: steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count
         run: |
-          echo "all is larger"
-
-      - name: terraform is larger
-        if: steps.path_filters.outputs.all_count < steps.path_filters.outputs.terraform_count
-        run: |
-          echo "terraform is larger"
-
-      - name: app_something
-        if: steps.path_filters.outputs.all == 'true'
-        run: |
-          echo "app-type"
+          echo "app-type deployment"
 
       - name: terraform_something
         if: steps.path_filters.outputs.terraform == 'true'
@@ -69,7 +53,7 @@ jobs:
           echo "terraform-type"
 
       - name: app_something
-        if: steps.path_filters.outputs.all == 'true' && steps.filter.outputs.terraform == 'true'
+        if: steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count && steps.filter.outputs.terraform == 'true'
         run: |
           echo "both-type"      
 
