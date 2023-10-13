@@ -31,14 +31,3 @@ jobs:
       - name: Deploy app
         if: contains(steps.pr_labels.outputs.labels, 'app')
         run: echo "Deploying app..."
-        
-  # deploy-app:
-  #   name: deploy-app
-  #   if: !contains(github.ref, 'terraform')
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-
-  #     - name: Deploy Other
-  #       run: echo "Deploying app..."
