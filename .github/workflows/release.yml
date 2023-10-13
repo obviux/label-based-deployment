@@ -22,6 +22,7 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Get PR number
+        if: steps.release.outputs.pr != ''
         id: pr_number 
         run: |
          PR_JSON=${{ steps.release.outputs.pr }}
@@ -29,6 +30,7 @@ jobs:
          bash .github/workflows/get_pr_number.sh ${{ steps.release.outputs.pr }}
 
       - name: Path filters
+        if: steps.release.outputs.pr != ''
         uses: dorny/paths-filter@v2
         id: path_filters
         with:
@@ -45,7 +47,7 @@ jobs:
               - 'terraform/**'
 
       - name: Label as app
-        if: steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count #If there are any changes that ar not on the ignore list
+        if: steps.release.outputs.pr != '' && steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count #If there are any changes that ar not on the ignore list
         uses: actions/github-script@v6
         with:
           script: |
@@ -58,7 +60,7 @@ jobs:
           retries: 2
 
       - name: Label as terraform
-        if: steps.path_filters.outputs.terraform == 'true' #If there are any terraform or deployment changes
+        if: steps.release.outputs.pr != '' && steps.path_filters.outputs.terraform == 'true' #If there are any terraform or deployment changes
         uses: actions/github-script@v6
         with:
           script: |
