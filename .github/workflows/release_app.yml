@@ -4,8 +4,11 @@ on:
   push:
     branches:
       - master
-    paths-ignore:
-      - 'terraform/**'
+    paths:
+      -  '**'
+      -  '!terraform/*'
+    # paths-ignore:
+    #   - 'terraform/**'
 
 jobs:
   release-management:
@@ -26,17 +29,9 @@ jobs:
       - name: Get PR number
         id: pr_number 
         run: |
-         echo "print PR_JSON"
-         echo ${{ steps.release.outputs.pr }}
          bash .github/workflows/get_pr_number.sh ${{ steps.release.outputs.pr }}
-      
-      - name: Labeler
-        uses: actions/labeler@v4
-        with:
-          dot: true
-          pr-number: ${{ steps.pr_number.outputs.number }}
 
-      - name: New_labeler
+      - name: Add_label
         uses: actions/github-script@v6
         with:
           script: |
@@ -46,60 +41,5 @@ jobs:
               repo: context.repo.repo,
               labels: ["app"]
             })
-      
-      - name: Did labeler do anything
-        run: |
-          echo "printing new-labels"
-          echo ${{ steps.Labeler.outputs.new-labels }}
-          echo "printing all-labels"
-          echo ${{ steps.Labeler.outputs.all-labels }}
-
-          
-      # PR_JSON="${{ steps.release.outputs.pr }}"
-      # echo "PR_JSON start"
-      # echo $PR_JSON
-      # echo "PR_JSON end"
-      # PR_NUMBER=$(jq -r '.number' <<< "$PR_JSON")
-      # echo "::set-output name=number::$PR_NUMBER"
-
-      
-      # - name: Is release created
-      #   if: ${{ steps.release.outputs.releases_created }}
-      #   run: echo "release is created"
-      # - name: Is release not created
-      #   if: ${{ steps.release.outputs.releases_created == false}}
-      #   run: echo "release is not created"
-      # - name: Add app tag to release
-      #   run: |
-      #     for i in {1..5}
-      #       do
-      #         echo "writing the value ${i}:"
-      #         echo "${{steps.release.outputs.releases_created}}"
-      #         echo ${{steps.release.outputs.releases_created}}
-      #         if [${{ steps.release.outputs.releases_created }}]
-      #         then
-      #           echo "it is true in the boolean sense"
-      #         else
-      #           echo "it is not true in the boolean sense"
-      #         fi
-
-      #         if [${{ steps.release.outputs.releases_created }}=="true"]
-      #         then
-      #           echo "it is true in the string sense"
-      #         else
-      #           echo "it is not true in the string sense"
-      #         fi
-      #         sleep 5
-      #       done
-          # for i in {1..10}
-          # do
-          #   if [[ "${{ steps.release.outputs.release_created }}" == "true" ]]; then
-          #     git tag app ${{ steps.release.outputs.tag_name }}
-          #     git push origin app
-          #     echo "Release tagged"
-          #     break
-          #   else
-          #     echo "Release not created yet, retrying in 5 seconds..."
-          #     sleep 5
           #   fi
           # done
