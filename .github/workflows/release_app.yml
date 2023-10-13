@@ -42,18 +42,18 @@ jobs:
               - 'version.txt'
               - 'terraform/**'
 
-      - name: all is larger
+      - name: all_type
         if: steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count
         run: |
           echo "app-type deployment"
 
-      - name: terraform_something
+      - name: terraform_type
         if: steps.path_filters.outputs.terraform == 'true'
         run: |
           echo "terraform-type"
 
-      - name: app_something
-        if: steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count && steps.filter.outputs.terraform == 'true'
+      - name: both_type
+        if: (steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count) && steps.filter.outputs.terraform == 'true'
         run: |
           echo "both-type"      
 
