@@ -65,3 +65,5 @@ jobs:
               repo: context.repo.repo,
               labels: ["app"]
             })
+          debug: true
+          retries: 5
