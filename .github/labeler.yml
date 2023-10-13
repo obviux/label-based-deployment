@@ -13,5 +13,11 @@ labeler2:
 workflow_change:
   -  '.github/**'
 
+dot_changes:
+  -  '.*'
+
+dot_changes2:
+  -  '.**'
+
 anything:
   -  '**'
