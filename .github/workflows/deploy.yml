@@ -25,7 +25,7 @@ jobs:
           label_list=()
 
           echo "Printing labels when creating list"
-          for label in $label_list_string
+          for label in ${label_list_string[@]}
           do
               echo "$element"
               label_list+=($element)
@@ -38,6 +38,8 @@ jobs:
           done
           
           labels_to_search_for=("app" "terraform")
+          echo "Printing labels to search for directly"
+          echo $labels_to_search_for
 
           echo "Printing elements of to search for list"
           for element in ${labels_to_search_for[@]}
