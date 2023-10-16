@@ -17,16 +17,33 @@ jobs:
         run: |
           echo $GITHUB_REPOSITORY
           echo github.event.release.target_commitish
+          
           gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all | jq '.[0].labels[].name'
-          label_list=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all | jq '.[0].labels[].name')
+          label_list_string=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all | jq '.[0].labels[].name')
           echo $label_list
-          searchable_array=("a" "b" "c")
-          elements_to_search_for=("b" "potato")
-          bash .github/workflows/is_string_in_array.sh searchable_array[@] elements_to_search_for[@]
-          app=$( gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all | jq '.[0].labels[].name' | grep -c 'app')
-          terraform=$($a | jq '.[0].labels[].name' | grep -c 'terraform')
-          echo $app
-          echo $terraform
+          label_list=()
+          
+          for label in $label_list_string
+          do
+              echo "$element"
+              label_list+=($element)
+          done
+          
+          for element in ${label_list[@]}
+          do
+              echo $element
+          done
+          
+          labels_to_search_for=(app terraform)
+          
+          for element in ${labels_to_search_for[@]}
+          do
+              echo $element
+          done
+          
+          bash .github/workflows/is_string_in_array.sh ${label_list[@]} ${labels_to_search_for[@]}
+
+
 
           
         # a=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all)
