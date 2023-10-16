@@ -12,6 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Extract list of labels designating the release type
       - name: Get release type
         id: release_type
         run: |
@@ -29,6 +30,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # Deploying/analyzing depending on release type
       - name: Deploy Terraform
         if: steps.release_type.outputs.is_terraform_release == 'true'
         run: echo "Deploying Terraform..."
