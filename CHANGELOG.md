@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.31](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.30...v1.0.31) (2023-10-16)
+
+
+### Miscellaneous
+
+* Delete empty.txt ([7a43821](https://github.com/obviux/dual-tag-release-poc/commit/7a438210d53489355d3f879fc0589d376a743439))
+* Delete terraform/sdfsf.tf ([e8c25cf](https://github.com/obviux/dual-tag-release-poc/commit/e8c25cf200ef43ea5ada2850b805d31cce64923d))
+* Update deploy.yml ([3796ed1](https://github.com/obviux/dual-tag-release-poc/commit/3796ed1539acc14ed53b2bac859d6338788b5a5b))
+* Update deploy.yml ([a6f4aa3](https://github.com/obviux/dual-tag-release-poc/commit/a6f4aa3ce7fc967f8ac8770755620be586ffa67b))
+* Update release.yml ([7f91494](https://github.com/obviux/dual-tag-release-poc/commit/7f91494593727f1339d7fe60159efc11640b2919))
+* Update release.yml ([8cb51db](https://github.com/obviux/dual-tag-release-poc/commit/8cb51dbc6af058f7c6e5dcc499aaa2151fec837e))
+* Update release.yml ([7204047](https://github.com/obviux/dual-tag-release-poc/commit/7204047cbdb84fefb0c99481509980477d4eac76))
+
 ## [1.0.30](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.29...v1.0.30) (2023-10-16)
 
 
