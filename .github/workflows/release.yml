@@ -29,7 +29,6 @@ jobs:
         if: steps.release.outputs.pr != ''
         id: pr_number 
         run: |
-         PR_JSON=${{ steps.release.outputs.pr }}
          bash .github/workflows/get_pr_number.sh ${{ steps.release.outputs.pr }}
 
       #Creating outputs depending on changed paths
