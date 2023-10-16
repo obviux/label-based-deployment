@@ -17,11 +17,16 @@ jobs:
         run: |
           echo $GITHUB_REPOSITORY
           echo github.event.release.target_commitish
-          gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all
+          # gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all
           a=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all)
-          echo $a
-          gh api -H "Accept: application/vnd.github+json" repos/OWNER/REPO/pulls?state=all
-          gh api -H "Accept: application/vnd.github+json" repos/OWNER/REPO/pulls/76
+          # echo $a
+          app=$(cat $a | jq '.[0].labels[].name' | grep -c 'app')
+          terraform=$(cat $a | jq '.[0].labels[].name' | grep -c 'terraform')
+          echo $app
+          echo $terraform
+        #  PR_NUMBER=$(gh api repos/$GITHUB_REPOSITORY/pulls --jq ".[] | select(.merge_commit_sha==\"${{ github.event.release.target_commitish }}\") | .number")
+        #  gh api -H "Accept: application/vnd.github+json" repos/OWNER/REPO/pulls?state=all
+        #  gh api -H "Accept: application/vnd.github+json" repos/OWNER/REPO/pulls/76
         # PR_NUMBER=$(gh api repos/$GITHUB_REPOSITORY/pulls --jq ".[] | select(.merge_commit_sha==\"${{ github.event.release.target_commitish }}\") | .number")
         #  echo $PR_NUMBER
         #  LABELS=$(gh api repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels --jq ".[].name")
