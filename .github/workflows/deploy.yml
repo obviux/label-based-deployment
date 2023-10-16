@@ -42,3 +42,4 @@ jobs:
       - name: Deploy app
         if: contains(steps.pr_labels.outputs.labels, 'app')
         run: echo "Deploying app..."
+
