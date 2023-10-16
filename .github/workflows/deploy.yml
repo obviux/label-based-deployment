@@ -20,27 +20,32 @@ jobs:
           
           gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all | jq '.[0].labels[].name'
           label_list_string=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all | jq '.[0].labels[].name')
-          echo $label_list
+          echo "printing list string"
+          echo $label_list_string
           label_list=()
-          
+
+          echo "Printing labels when creating list"
           for label in $label_list_string
           do
               echo "$element"
               label_list+=($element)
           done
-          
+
+          echo "Printing elements of list"
           for element in ${label_list[@]}
           do
               echo $element
           done
           
-          labels_to_search_for=(app terraform)
-          
+          labels_to_search_for=("app" "terraform")
+
+          echo "Printing elements of to search for list"
           for element in ${labels_to_search_for[@]}
           do
               echo $element
           done
-          
+
+          echo "Running bash script"
           bash .github/workflows/is_string_in_array.sh ${label_list[@]} ${labels_to_search_for[@]}
 
 
