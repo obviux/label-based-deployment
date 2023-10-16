@@ -50,6 +50,18 @@ jobs:
           echo "Running bash script"
           bash .github/workflows/is_string_in_array.sh ${label_list[@]} ${labels_to_search_for[@]}
 
+          if echo "$label_list_string" | grep -q '"app"'; then
+              echo "'\"app\"' is in the string"
+          else
+              echo "'\"app\"' is not in the string"
+          fi
+
+          if echo "$label_list_string" | grep -q '"terraform"'; then
+              echo "'\"terraform\"' is in the string"
+          else
+              echo "'\"terraform\"' is not in the string"
+          fi
+
 
 
           
