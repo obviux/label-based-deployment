@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.25](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.24...v1.0.25) (2023-10-16)
+
+
+### Miscellaneous
+
+* Update deploy.yml ([403010a](https://github.com/obviux/dual-tag-release-poc/commit/403010a6ae3e7cc0bd3a0e7a7b77f32b9d6ebb0b))
+* Update is_string_in_list.sh ([02650f8](https://github.com/obviux/dual-tag-release-poc/commit/02650f8c5b10647aefa19707d3a5a6900f3b9398))
+
 ## [1.0.24](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.23...v1.0.24) (2023-10-16)
 
 
