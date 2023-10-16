@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.28](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.27...v1.0.28) (2023-10-16)
+
+
+### Miscellaneous
+
+* Update deploy.yml ([d9f8864](https://github.com/obviux/dual-tag-release-poc/commit/d9f8864d4ba520f572be2c67928876c422c970ef))
+
 ## [1.0.27](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.26...v1.0.27) (2023-10-16)
 
 
