@@ -15,78 +15,34 @@ jobs:
       - name: Get PR labels
         id: pr_labels
         run: |
-          echo $GITHUB_REPOSITORY
-          echo github.event.release.target_commitish
-          
           gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all | jq '.[0].labels[].name'
           label_list_string=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all | jq '.[0].labels[].name')
-          echo "printing list string"
           echo $label_list_string
-          label_list=()
-
-          echo "Printing labels when creating list"
-          for label in ${label_list_string[@]}
-          do
-              echo "$element"
-              label_list+=($element)
-          done
-
-          echo "Printing elements of list"
-          for element in ${label_list[@]}
-          do
-              echo $element
-          done
-          
-          labels_to_search_for=("app" "terraform")
-          echo "Printing labels to search for directly"
-          echo $labels_to_search_for
-
-          echo "Printing elements of to search for list"
-          for element in ${labels_to_search_for[@]}
-          do
-              echo $element
-          done
-
-          echo "Running bash script"
-          bash .github/workflows/is_string_in_array.sh ${label_list[@]} ${labels_to_search_for[@]}
 
           if echo "$label_list_string" | grep -q '"app"'; then
-              echo "'\"app\"' is in the string"
+              echo "It has the app-label"
+              echo "is_app_release=true" >> $GITHUB_OUTPUT
           else
-              echo "'\"app\"' is not in the string"
+              echo "It doesn't have the app-label"
+              echo "is_app_release=false" >> $GITHUB_OUTPUT
           fi
 
           if echo "$label_list_string" | grep -q '"terraform"'; then
-              echo "'\"terraform\"' is in the string"
+              echo "It has the terraform-label"
+              echo "is_terraform_release=true" >> $GITHUB_OUTPUT
           else
-              echo "'\"terraform\"' is not in the string"
+              echo "It doesn't have the terraform-label"
+              echo "is_terraform_release=false" >> $GITHUB_OUTPUT
           fi
 
-
-
-          
-        # a=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all)
-        # gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all | jq '.[0]' 
-        # gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all | jq '.[0].labels[]'
-        # app=$($a | jq '.[0].labels[].name' | grep -c 'app')
-        # gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all
-        # echo $a
-        #  PR_NUMBER=$(gh api repos/$GITHUB_REPOSITORY/pulls --jq ".[] | select(.merge_commit_sha==\"${{ github.event.release.target_commitish }}\") | .number")
-        #  gh api -H "Accept: application/vnd.github+json" repos/OWNER/REPO/pulls?state=all
-        #  gh api -H "Accept: application/vnd.github+json" repos/OWNER/REPO/pulls/76
-        # PR_NUMBER=$(gh api repos/$GITHUB_REPOSITORY/pulls --jq ".[] | select(.merge_commit_sha==\"${{ github.event.release.target_commitish }}\") | .number")
-        #  echo $PR_NUMBER
-        #  LABELS=$(gh api repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels --jq ".[].name")
-        #  echo $LABELS
-        #  echo "::set-output name=labels::${LABELS}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy Terraform
-        if: contains(steps.pr_labels.outputs.labels, 'terraform')
+        if: steps.pr_labels.outputs.is_app_release == 'true'
         run: echo "Deploying Terraform..."
       
       - name: Deploy app
-        if: contains(steps.pr_labels.outputs.labels, 'app')
+        if: steps.pr_labels.outputs.is_terraform_release == 'true'
         run: echo "Deploying app..."
 
