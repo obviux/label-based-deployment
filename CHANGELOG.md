@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.30](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.29...v1.0.30) (2023-10-16)
+
+
+### Miscellaneous
+
+* Create sdfsf.tf ([d5e5856](https://github.com/obviux/dual-tag-release-poc/commit/d5e58562480456b5619bb70f495a0a87e087853a))
+
 ## [1.0.29](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.28...v1.0.29) (2023-10-16)
 
 
