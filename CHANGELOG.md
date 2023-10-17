@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.46](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.45...v1.0.46) (2023-10-17)
+
+
+### Miscellaneous
+
+* Delete terraform/d.tf ([ae15995](https://github.com/obviux/dual-tag-release-poc/commit/ae159952eac2f3ce75ef96eb1788f992f2b8c5a9))
+
 ## [1.0.45](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.44...v1.0.45) (2023-10-17)
 
 
