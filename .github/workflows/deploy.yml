@@ -25,7 +25,7 @@ jobs:
             echo $commit_sha
             echo ${{github.event.release.target_commitish}}
             if [[ $commit_sha == "${{github.event.release.target_commitish}}" ]]; then
-              echo "here it is! i is $i"
+              echo "here it is! i is $i" 
               pr_idx=$i
               break
             fi
