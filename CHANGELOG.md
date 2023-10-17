@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.44](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.43...v1.0.44) (2023-10-17)
+
+
+### Miscellaneous
+
+* Create d.tf ([d8bbcbb](https://github.com/obviux/dual-tag-release-poc/commit/d8bbcbbca0fdc4e923e8724fd37fd5e3d7f6ccd1))
+* Create s.txt ([8a0c887](https://github.com/obviux/dual-tag-release-poc/commit/8a0c887c9d3f14de387195a926ee3672805f20c9))
+
 ## [1.0.43](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.42...v1.0.43) (2023-10-17)
 
 
