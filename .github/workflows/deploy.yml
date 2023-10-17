@@ -25,17 +25,17 @@ jobs:
           for ((i=0; i<$pr_count; i++)); do
             echo "Processing element $i"
             output=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all)
-            commit_sha=$(echo $output | jq ".[$i].merge_commit_sha")
+            commit_sha=$(echo $output | jq -r ".[$i].merge_commit_sha")
             echo $commit_sha
             echo ${{github.event.release.target_commitish}}
-            if [[ $commit_sha == "\"${{github.event.release.target_commitish}}\"" ]]; then
+            if [[ $commit_sha == "${{github.event.release.target_commitish}}" ]]; then
               echo "here it is! i is $i"
               pr_idx=$i
               break
             fi
           done
 
-          label_list_string=$(echo $output | jq '.[$pr_idx].labels[].name')
+          label_list_string=$(echo $output | jq ".[$pr_idx].labels[].name")
 
           if echo "$label_list_string" | grep -q '"app"'; then
               echo "is_app_release=true" >> $GITHUB_OUTPUT
