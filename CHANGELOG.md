@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.45](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.44...v1.0.45) (2023-10-17)
+
+
+### Miscellaneous
+
+* Delete s.txt ([0d1255d](https://github.com/obviux/dual-tag-release-poc/commit/0d1255d157436be3437783e060f7bb7b24e8627d))
+
 ## [1.0.44](https://github.com/obviux/dual-tag-release-poc/compare/v1.0.43...v1.0.44) (2023-10-17)
 
 
