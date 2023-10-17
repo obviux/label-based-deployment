@@ -28,7 +28,7 @@ jobs:
             commit_sha=$(echo $output | jq ".[$i].merge_commit_sha")
             echo $commit_sha
             echo ${{github.event.release.target_commitish}}
-            if (( $commit_sha == '"${{github.event.release.target_commitish}}"' )); then
+            if [[ $commit_sha == "\"${{github.event.release.target_commitish}}\"" ]]; then
               echo "here it is! i is $i"
               pr_idx=$i
               break
