@@ -33,7 +33,7 @@ jobs:
 
       - name: Get PR number
         uses: obviux/get_pr_number@v1.0.3
-        id: pr_number 
+        id: get_pr_number 
         with:
           pr_string: ${{ steps.release.outputs.pr }}
 
@@ -62,7 +62,7 @@ jobs:
         with:
           script: |
             github.rest.issues.addLabels({
-              issue_number: ${{ steps.pr_number.outputs.number }},
+              issue_number: ${{ steps.get_pr_number.outputs.pr_number }},
               owner: context.repo.owner,
               repo: context.repo.repo,
               labels: ["app"]
@@ -75,7 +75,7 @@ jobs:
         with:
           script: |
             github.rest.issues.addLabels({
-              issue_number: ${{ steps.pr_number.outputs.number }},
+              issue_number: ${{ steps.get_pr_number.outputs.pr_number }},
               owner: context.repo.owner,
               repo: context.repo.repo,
               labels: ["terraform"]
