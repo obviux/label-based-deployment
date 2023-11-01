@@ -39,7 +39,7 @@ jobs:
 
       #   env:
       #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: obviux/get_pr_labels@v1.0.3
+      - uses: obviux/get_pr_labels@v1.0.4
         id: get_release_type
         with:
           target_commitish: ${{github.event.release.target_commitish}}
@@ -50,11 +50,14 @@ jobs:
       - id: json_to_ouputs
         run: |
           labels_json=$(echo '${{ steps.get_release_type.outputs.found_labels }}' | jq .)
+          echo $labels_json
       
           # Loop over the keys in the JSON object.
           for key in $(echo $labels_json | jq -r 'keys[]'); do
             # Get the value associated with the key.
             value=$(echo $labels_json | jq -r --arg key "$key" '.[$key]')
+            echo $key
+            echo $value
       
             # Add a new output for the label.
             echo "has_${key}_label=$value" >> $GITHUB_OUTPUT
@@ -62,10 +65,10 @@ jobs:
 
       # Deploying/analyzing depending on release type
       - name: Deploy Terraform
-        if: steps.release_type.outputs.is_terraform_release == 'true'
+        if: steps.release_type.outputs.has_terraform_label == 'true'
         run: echo "Deploying Terraform..."
       
       - name: Deploy app
-        if: steps.release_type.outputs.is_app_release == 'true'
+        if: steps.release_type.outputs.has_app_label == 'true'
         run: echo "Deploying app..."
 
