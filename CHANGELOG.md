@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.48](https://github.com/obviux/label-based-deployment/compare/v1.0.47...v1.0.48) (2023-11-01)
+
+
+### Miscellaneous
+
+* Update release.yml ([c9daa3b](https://github.com/obviux/label-based-deployment/commit/c9daa3b5b3c2bdfff0e64b8bb24f8627f1679d81))
+
 ## [1.0.47](https://github.com/obviux/label-based-deployment/compare/v1.0.46...v1.0.47) (2023-11-01)
 
 
