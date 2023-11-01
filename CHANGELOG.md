@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.55](https://github.com/obviux/label-based-deployment/compare/v1.0.54...v1.0.55) (2023-11-01)
+
+
+### Miscellaneous
+
+* Delete .github/workflows/get_pr_number.sh ([7f977df](https://github.com/obviux/label-based-deployment/commit/7f977df9132406881634d3b273fc6a61e0709bb4))
+
 ## [1.0.54](https://github.com/obviux/label-based-deployment/compare/v1.0.53...v1.0.54) (2023-11-01)
 
 
