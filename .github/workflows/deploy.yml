@@ -12,33 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Extract list of labels designating the release type
-      # - name: Get release type
-      #   id: release_type
-      #   run: |
-      #     pr_count=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all | jq length)
-      #     output=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$GITHUB_REPOSITORY/pulls?state=all)
-
-      #     for ((i=0; i<$pr_count; i++)); do
-      #       commit_sha=$(echo $output | jq -r ".[$i].merge_commit_sha")
-      #       if [[ $commit_sha == "${{github.event.release.target_commitish}}" ]]; then
-      #         pr_idx=$i
-      #         break
-      #       fi
-      #     done
-
-      #     label_list_string=$(echo $output | jq ".[$pr_idx].labels[].name")
-
-      #     if echo "$label_list_string" | grep -q '"app"'; then
-      #         echo "is_app_release=true" >> $GITHUB_OUTPUT
-      #     fi
-
-      #     if echo "$label_list_string" | grep -q '"terraform"'; then
-      #         echo "is_terraform_release=true" >> $GITHUB_OUTPUT
-      #     fi
-
-      #   env:
-      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Gets a JSON like {desire_labels[0]: <true/false>, ...}
       - uses: obviux/get_pr_labels@v1.0.4
         id: get_release_type
         with:
@@ -47,7 +21,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - id: json_to_ouputs
+      # sets individual outputs from the json
+      - name: Extract release type
+        id: extract_release_type
         run: |
           labels_json=$(echo '${{ steps.get_release_type.outputs.found_labels }}' | jq .)
           echo $labels_json
@@ -56,20 +32,17 @@ jobs:
           for key in $(echo $labels_json | jq -r 'keys[]'); do
             # Get the value associated with the key.
             value=$(echo $labels_json | jq -r --arg key "$key" '.[$key]')
-            echo $key
-            echo $value
       
             # Add a new output for the label.
             echo "has_${key}_label=$value" >> $GITHUB_OUTPUT
-            echo "has_${key}_label=$value"
           done
 
       # Deploying/analyzing depending on release type
       - name: Deploy Terraform
-        if: steps.json_to_ouputs.outputs.has_terraform_label == 'true'
+        if: steps.extract_release_type.outputs.has_terraform_label == 'true'
         run: echo "Deploying Terraform..."
       
       - name: Deploy app
-        if: steps.json_to_ouputs.outputs.has_app_label == 'true'
+        if: steps.extract_release_type.outputs.has_app_label == 'true'
         run: echo "Deploying app..."
 
