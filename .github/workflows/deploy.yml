@@ -61,14 +61,15 @@ jobs:
       
             # Add a new output for the label.
             echo "has_${key}_label=$value" >> $GITHUB_OUTPUT
+            echo "has_${key}_label=$value"
           done
 
       # Deploying/analyzing depending on release type
       - name: Deploy Terraform
-        if: steps.release_type.outputs.has_terraform_label == 'true'
+        if: steps.json_to_ouputs.outputs.has_terraform_label == 'true'
         run: echo "Deploying Terraform..."
       
       - name: Deploy app
-        if: steps.release_type.outputs.has_app_label == 'true'
+        if: steps.json_to_ouputs.outputs.has_app_label == 'true'
         run: echo "Deploying app..."
 
