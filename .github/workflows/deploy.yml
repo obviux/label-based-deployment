@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
 
       # Gets a JSON like {desire_labels[0]: <true/false>, ...}
-      - uses: obviux/get_pr_labels@v1.0.4
+      - uses: obviux/get_pr_labels@v1.0.5
         id: get_release_type
         with:
           target_commitish: ${{github.event.release.target_commitish}}
