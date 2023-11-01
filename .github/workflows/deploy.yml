@@ -39,7 +39,7 @@ jobs:
 
       #   env:
       #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: obviux/get_pr_labels@v1.0.1
+      - uses: obviux/get_pr_labels@v1.0.2
         id: get_release_type
         with:
           target_commitish: ${{github.event.release.target_commitish}}
