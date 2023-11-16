@@ -9,6 +9,10 @@ jobs:
   release-management:
     runs-on: ubuntu-latest
     concurrency: release
+    outputs:
+      is_terragrunt_release: steps.path_filters.outputs.terragrunt == 'true'
+      is_app_release: steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count
+      service_image_tag: ${{ steps.release.outputs.sha }}
     steps:
       #Maintain same release please pipeline
       - name: Manage release
@@ -82,3 +86,13 @@ jobs:
               labels: ["terraform"]
             })
           retries: 1
+          
+  tests:
+    runs-on: ubuntu-latest
+    needs: [ release-management ]
+    steps:
+      - name: Print stuff
+        run: |
+          echo "is_terragrunt_release ${{ needs.release-management.outputs.is_terragrunt_release }}"
+          echo "is_app_release ${{ needs.release-management.outputs.is_app_release }}"
+          echo "service_image_tag ${{ needs.release-management.outputs.service_image_tag }}"
