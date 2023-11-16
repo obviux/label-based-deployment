@@ -92,6 +92,9 @@ jobs:
     steps:
       - name: Print stuff
         run: |
-          echo "is_terragrunt_release ${{ needs.release-management.outputs.is_terragrunt_release }}"
-          echo "is_app_release ${{ needs.release-management.outputs.is_app_release }}"
-          echo "service_image_tag ${{ needs.release-management.outputs.service_image_tag }}"
+          echo "is_terragrunt_release
+          echo ${{ needs.release-management.outputs.is_terragrunt_release }}
+          echo "is_app_release"
+          echo ${{ needs.release-management.outputs.is_app_release }}
+          echo "service_image_tag"
+          echo ${{ needs.release-management.outputs.service_image_tag }}
