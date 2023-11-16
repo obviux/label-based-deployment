@@ -92,7 +92,7 @@ jobs:
     steps:
       - name: Print stuff
         run: |
-          echo "is_terragrunt_release
+          echo "is_terragrunt_release"
           echo ${{ needs.release-management.outputs.is_terragrunt_release }}
           echo "is_app_release"
           echo ${{ needs.release-management.outputs.is_app_release }}
