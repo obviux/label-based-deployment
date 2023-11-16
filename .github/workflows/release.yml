@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: release
     outputs:
-      is_terragrunt_release: ${steps.path_filters.outputs.terragrunt == 'true'}
-      is_app_release: ${steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count}
+      is_terragrunt_release: ${{steps.path_filters.outputs.terragrunt == 'true'}}
+      is_app_release: ${{steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count}}
       service_image_tag: ${{ steps.release.outputs.sha }}
     steps:
       #Maintain same release please pipeline
