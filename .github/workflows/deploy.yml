@@ -59,3 +59,8 @@ jobs:
           echo "print outputs"
           echo ${{needs.deploy.outputs.is_terragrunt_release}}
           echo ${{needs.deploy.outputs.is_app_release}}
+
+      - name: print commitish and sha
+        run: |
+          echo ${{ github.event.release.target_commitish }}
+          echo ${{ github.sha }}
