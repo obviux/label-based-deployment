@@ -89,6 +89,7 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     needs: [ release-management ]
+    if: needs.release-management.outputs.is_app_release == 'true'
     steps:
       - name: Print stuff
         run: |
