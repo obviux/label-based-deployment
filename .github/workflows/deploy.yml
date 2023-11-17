@@ -8,9 +8,12 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
+    outputs:
+      is_terragrunt_release: ${{steps.path_filters.outputs.terragrunt == 'true'}}
+      is_app_release: ${{steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count}}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      # - name: Checkout code
+      #   uses: actions/checkout@v2
 
       # Gets a JSON like {desire_labels[0]: <true/false>, ...}
       - uses: obviux/get_pr_labels@v1.0.5
