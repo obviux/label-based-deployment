@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.0.56](https://github.com/obviux/label-based-deployment/compare/v1.0.55...v1.0.56) (2023-11-17)
+
+
+### Miscellaneous
+
+* Create empty.txt ([d4e62cc](https://github.com/obviux/label-based-deployment/commit/d4e62cc961654604cd4dac6fda9ed03d6137c9d2))
+* Update deploy.yml ([c678e3e](https://github.com/obviux/label-based-deployment/commit/c678e3ec8e5806442d3126fc870cd03e383daff3))
+* Update deploy.yml ([a96e639](https://github.com/obviux/label-based-deployment/commit/a96e639fb75887703c2d7fb1c4b792b8961e2703))
+* Update empty.txt ([c0da8fc](https://github.com/obviux/label-based-deployment/commit/c0da8fcc5dc3c47b5068d207ff4739f5e63daf5a))
+* Update release.yml ([286e80e](https://github.com/obviux/label-based-deployment/commit/286e80ea52548df803227d07726e6d6acb23e39d))
+* Update release.yml ([03cb839](https://github.com/obviux/label-based-deployment/commit/03cb839f36e19b0bb6a87249efc87f16f28de208))
+* Update release.yml ([c5a5fd0](https://github.com/obviux/label-based-deployment/commit/c5a5fd04ef0dc6d90f9b2da863f16262d5bd4b5f))
+* Update release.yml ([b27c7b1](https://github.com/obviux/label-based-deployment/commit/b27c7b17b517877a371deb0ace632485dfa5b8c4))
+* Update release.yml ([852a3e4](https://github.com/obviux/label-based-deployment/commit/852a3e4d312502462d51d11af777d58ec68127a0))
+* Update release.yml ([b87deb7](https://github.com/obviux/label-based-deployment/commit/b87deb7d6897648461a9b9e777c7edea1432ad7b))
+* Update release.yml ([8d3d6db](https://github.com/obviux/label-based-deployment/commit/8d3d6db4392a198ac593ea74ca800a8b5701602b))
+* Update release.yml ([1705feb](https://github.com/obviux/label-based-deployment/commit/1705febb91eb26089dadb5ccdc563eecb7ccefa4))
+* Update release.yml ([138b5ab](https://github.com/obviux/label-based-deployment/commit/138b5ab0b4132ad41321f07b7bfce1c35f76e281))
+
 ## [1.0.55](https://github.com/obviux/label-based-deployment/compare/v1.0.54...v1.0.55) (2023-11-01)
 
 
