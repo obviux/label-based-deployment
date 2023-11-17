@@ -57,5 +57,5 @@ jobs:
       - name: test
         run: |
           echo "print outputs"
-          echo ${{is_terragrunt_release}}
-          echo ${{is_app_release}}
+          echo ${{needs.deploy.outputs.is_terragrunt_release}}
+          echo ${{needs.deploy.outputs.is_app_release}}
