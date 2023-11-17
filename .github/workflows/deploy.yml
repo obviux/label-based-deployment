@@ -9,8 +9,8 @@ jobs:
     name: deploy
     runs-on: ubuntu-latest
     outputs:
-      is_terragrunt_release: ${{steps.path_filters.outputs.terragrunt == 'true'}}
-      is_app_release: ${{steps.path_filters.outputs.all_count > steps.path_filters.outputs.app-ignore-list_count}}
+      is_terragrunt_release: ${{ steps.extract_release_type.outputs.has_terraform_label == 'true' }}
+      is_app_release: ${{ steps.extract_release_type.outputs.has_app_label == 'true' }}
     steps:
       # - name: Checkout code
       #   uses: actions/checkout@v2
